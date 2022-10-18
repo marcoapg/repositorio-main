@@ -17,8 +17,8 @@ class tipo_persona(models.Model):
 class persona(models.Model):
 
     CHOICE_SEXO = [
-        ('M', 'Masculino'),
-        ('F', 'Femenino'),
+        ('M', 'MASCULINO'),
+        ('F', 'FEMENINO'),
     ]
 
     persona_id=models.BigAutoField(primary_key=True)
