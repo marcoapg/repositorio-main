@@ -9,6 +9,11 @@ class pais(models.Model):
     nombre=models.CharField(max_length=30)
     sigla=models.CharField(max_length=3,default='')
 
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.sigla= self.sigla.upper()
+        super(pais, self).save(force_insert, force_update)
+
     def __str__(self):
         return str(self.nombre)
 
@@ -19,6 +24,10 @@ class tipo_competicion(models.Model):
     tipo_competicion_id=models.BigAutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
     estado=models.BooleanField()
+    
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(tipo_competicion, self).save(force_insert, force_update)
 
     def __str__(self):
          return str(self.nombre)
@@ -30,6 +39,10 @@ class deporte(models.Model):
     deporte_id=models.BigAutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
     estado=models.BooleanField()
+
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(deporte, self).save(force_insert, force_update)
 
     def __str__(self):
          return str(self.deporte_id)
@@ -48,6 +61,10 @@ class competicion(models.Model):
     fecha_inicio=models.DateField(blank=True,null=True,default='1990-12-12')
     fecha_fin=models.DateField(blank=True,null=True,default='1990-12-12')
 
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(competicion, self).save(force_insert, force_update)
+
     def __str__(self):
          return str(self.nombre)
     
@@ -58,6 +75,10 @@ class grupo(models.Model):
     grupo_id=models.BigAutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
     
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(grupo, self).save(force_insert, force_update)
+
     def __str__(self):
         return str(self.nombre)
     

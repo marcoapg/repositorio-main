@@ -8,6 +8,10 @@ class formacion(models.Model):
     formacion_id=models.BigAutoField(primary_key=True)
     descripcion=models.CharField(max_length=10)
 
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        super(formacion, self).save(force_insert, force_update)
+
     def __str__(self):
         return self.descripcion
     
@@ -17,6 +21,10 @@ class formacion(models.Model):
 class estado(models.Model):
     estado_id=models.BigAutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
+
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(estado, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.nombre
@@ -29,6 +37,11 @@ class ciudad(models.Model):
     nombre=models.CharField(max_length=30)
     norma=models.CharField(max_length=5)
     pais_id=models.ForeignKey('appCompeticion.pais',on_delete=models.CASCADE,db_column='pais_id')
+
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.norma = self.norma.upper()
+        super(ciudad, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.nombre
@@ -53,6 +66,11 @@ class sede(models.Model):
     # CHOICE_ESTADO_SEDE| SD= SUSPENDIDO TEMPORALMENTE, DI= DISPONIBLE , EM = EN MANTENIMIENTO, ND = NO DISPONIBLE, ST = SUSPENDIDO TEMPORALMENTE
     estado=models.CharField(max_length=2,default='DI',choices=CHOICE_ESTADO_SEDE)
 
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.alias = self.alias.upper()
+        super(sede, self).save(force_insert, force_update)
+
     def __str__(self):
         return self.nombre
 
@@ -67,6 +85,11 @@ class encuentro(models.Model):
     humedad=models.CharField(max_length=4)
     clima=models.CharField(max_length=4)
     estado_jugado=models.BooleanField()
+
+    def save(self, force_insert=False, force_update=False):
+        self.humedad = self.humedad.upper()
+        self.clima = self.clima.upper()
+        super(encuentro, self).save(force_insert, force_update)
 
     def __str__(self):
         return str(self.encuentro_id)
@@ -99,6 +122,10 @@ class evento(models.Model):
     descripcion=models.CharField(max_length=30)
     estado=models.BooleanField()
 
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        super(evento, self).save(force_insert, force_update)
+
     def __str__(self):
         return self.descripcion
 
@@ -120,6 +147,11 @@ class evento_persona(models.Model):
     tipo_suceso=models.CharField(max_length=1,choices=CHOICE_TIPO_SUCESO,blank=True,null=True)   
     tiempo=models.IntegerField()
     observacion=models.CharField(max_length=50,blank=True,null=True)
+
+    def save(self, force_insert=False, force_update=False):
+        self.suceso = self.suceso.upper()
+        self.observacion = self.observacion.upper()
+        super(evento_persona, self).save(force_insert, force_update)
 
     def __str__(self):
         return str(self.encuentro_evento_id)

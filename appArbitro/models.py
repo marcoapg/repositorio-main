@@ -21,6 +21,11 @@ class arbitro(models.Model):
     pais_id=models.ForeignKey("appCompeticion.pais",on_delete=models.CASCADE,db_column='pais_id')
     estado=models.BooleanField()
 
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.apellido= self.apellido.upper()
+        super(arbitro, self).save(force_insert, force_update)
+
     def __str__(self):
         return str(self.nombre)
     
@@ -33,6 +38,11 @@ class tipo_terna(models.Model):
     descripcion = models.CharField(max_length=30)
     siglas = models.CharField(max_length=3)
 
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        self.siglas = self.siglas.upper()
+        super(tipo_terna, self).save(force_insert, force_update)
+
     def __str__(self):
         return str(self.descripcion)
     
@@ -44,6 +54,9 @@ class terna_arbitral(models.Model):
     nombre_terna=models.CharField(max_length=50)
     estado=models.BooleanField()
     
+    def save(self, force_insert=False, force_update=False):
+        self.nombre_terna = self.nombre_terna.upper()
+        super(terna_arbitral, self).save(force_insert, force_update)
     def __str__(self):
         return self.nombre_terna
 

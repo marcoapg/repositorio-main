@@ -1,11 +1,15 @@
 from django.db import models
-
+from django.db.models.functions import Upper
 # Create your models here.
 
 class tipo_persona(models.Model):
     tipo_persona_id=models.BigAutoField(primary_key=True)
     descripcion=models.CharField(max_length=30)
     estado=models.BooleanField()
+
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        super(tipo_persona, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.descripcion
@@ -33,7 +37,13 @@ class persona(models.Model):
     peso=models.FloatField()
     estado=models.BooleanField()
     tipo_persona_id=models.ForeignKey(tipo_persona,on_delete=models.CASCADE, db_column='tipo_persona_id')
-
+    #Guardar en mayùscula
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.apellido = self.apellido.upper()
+        self.alias = self.alias.upper()
+        super(persona, self).save(force_insert, force_update)
+ 
     def __str__(self):
         return self.nombre
 
@@ -43,11 +53,11 @@ class persona(models.Model):
 class contrato(models.Model):
 
     CHOICE_TIPO_CONTRATO = [
-        ('P','Prestamo'),
-        ('C','Compra'),
-        ('L','Libre'),
-        ('R','Renovacion'),
-        ('S','Seleccion'),
+        ('P','PRÉSTAMO'),
+        ('C','COMPRA'),
+        ('L','LIBRE'),
+        ('R','RENOVACIÓN'),
+        ('S','SELECCIÓN'),
     ]
 
     contrato_id=models.BigAutoField(primary_key=True)

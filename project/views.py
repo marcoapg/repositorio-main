@@ -20,6 +20,22 @@ def contadoresAdmin(request):
     }
     return render(request, 'admin/index.html', data)
 
+def contextoJugador(request):
+
+    data = {
+
+    }
+
+    return render(request, 'jugador.html', data)
+
+def contextoEquipo(request, nombre_equipo):
+    equipos = equipo.objects.get(nombre=nombre_equipo.upper())
+    data = {
+        'equipo' : equipos
+    }
+
+    return render(request, 'equipo.html', data)
+
 def index(request):
     data={
         

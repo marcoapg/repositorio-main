@@ -6,6 +6,10 @@ class categoria_equipo(models.Model):
     categoria_id=models.BigAutoField(primary_key=True)
     nombre=models.CharField(max_length=30)
     
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        super(categoria_equipo, self).save(force_insert, force_update)
+ 
     def __str__(self):
         return self.nombre
     
@@ -16,6 +20,10 @@ class categoria_equipo(models.Model):
 class tipo_equipo(models.Model):
     tipo_equipo_id=models.BigAutoField(primary_key=True)
     descripcion=models.CharField(max_length=30)
+
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        super(tipo_equipo, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.descripcion
@@ -35,6 +43,11 @@ class equipo(models.Model):
     sede_id=models.ForeignKey("appPartido.sede",on_delete=models.CASCADE,db_column='sede_id')
     deporte_id=models.ForeignKey("appCompeticion.deporte",on_delete=models.CASCADE,db_column='deporte_id')
 
+    def save(self, force_insert=False, force_update=False):
+        self.nombre = self.nombre.upper()
+        self.siglas = self.siglas.upper()
+        super(equipo, self).save(force_insert, force_update)
+
     def __str__(self):
         return self.nombre
 
@@ -44,6 +57,10 @@ class equipo(models.Model):
 class posicion_jugador(models.Model):
     posicion_jugador_id=models.BigAutoField(primary_key=True)
     descripcion=models.CharField(max_length=30)
+
+    def save(self, force_insert=False, force_update=False):
+        self.descripcion = self.descripcion.upper()
+        super(posicion_jugador, self).save(force_insert, force_update)
 
     def __str__(self):
         return self.descripcion
