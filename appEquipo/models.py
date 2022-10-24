@@ -36,6 +36,7 @@ class equipo(models.Model):
     logo=models.ImageField(null=True, blank=True, upload_to='equipo/logo/')
     vestimenta_principal=models.ImageField(null=True, blank=True, upload_to='equipo/vestimenta_principal/')
     vestimenta_alterna=models.ImageField(null=True,blank=True, upload_to='equipo/vestimenta_secundaria/')
+    presidente=models.CharField(default='', max_length=50)
     nombre=models.CharField(max_length=70)
     siglas=models.CharField(max_length=3)
     categoria_equipo=models.ForeignKey(categoria_equipo,on_delete=models.CASCADE,db_column='categoria_equipo')
@@ -46,6 +47,7 @@ class equipo(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.nombre = self.nombre.upper()
         self.siglas = self.siglas.upper()
+        self.presidente = self.presidente.upper()
         super(equipo, self).save(force_insert, force_update)
 
     def __str__(self):

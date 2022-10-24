@@ -8903,8 +8903,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 .btn.theme,
 .section-title.single-result .result-match,
 .clear-title:after {
-  background: #1a3151 !important;
-  background-color: #1a3151 !important;
+  background: #29cb1f !important;
+  background-color: #29cb1f !important;
 }
 
 /* Colors ----------------------------------------------------------*/
@@ -8946,13 +8946,13 @@ footer.footer-2 .links-footer ul li a:hover,
 .section-title-team h6 strong,
 .section-title-team h6 a,
 .recent-results .info-results ul li .head .date {
-  color: #1a3151;
+  color: #29cb1f;
 }
 
 /* Borders ----------------------------------------------------------*/
 .nav-tabs li a.active:after,
 .nav-tabs li.active a:after {
-  border: 6px solid #1a3151;
+  border: 6px solid #29cb1f;
   border-left-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
@@ -8960,31 +8960,31 @@ footer.footer-2 .links-footer ul li a:hover,
 
 .style-caption p,
 .item-clubs {
-  border-right: 5px solid #1a3151;
+  border-right: 5px solid #29cb1f;
 }
 
 .titles h4 {
-  border-left: 5px solid #1a3151;
+  border-left: 5px solid #29cb1f;
 }
 
 .pagination > .active > a,
 .pagination > .active:hover > a,
 .portfolioFilter .current:before, .portfolioFilter a:hover:before {
-  border-color: #1a3151 !important;
+  border-color: #29cb1f !important;
 }
 
 .style-caption h1:before {
   border-top: 40px solid transparent;
   border-bottom: 40px solid transparent;
-  border-left: 40px solid #1a3151;
+  border-left: 40px solid #29cb1f;
 }
 
 .crumbs:before {
-  border-bottom: 20px solid #1a3151;
+  border-bottom: 20px solid #29cb1f;
 }
 
 .stats-info ul {
-  border-top-color: #1a3151 !important;
+  border-top-color: #29cb1f !important;
 }
 
 .sf-menu li:hover > .sf-mega,
@@ -8992,29 +8992,29 @@ footer.footer-2 .links-footer ul li a:hover,
 .mainmenu,
 .sf-menu .sub-current,
 .header-2 {
-  border-bottom: 3px solid #1a3151;
+  border-bottom: 3px solid #29cb1f;
 }
 
 .header-2 .is-sticky {
-  border-bottom: 3px solid #1a3151 !important;
+  border-bottom: 3px solid #29cb1f !important;
 }
 
 header,
 .overlay-player,
 .crumbs {
-  border-top: 3px solid #1a3151;
+  border-top: 3px solid #29cb1f;
 }
 
 .sf-arrows > li > .sf-with-ul:focus:after,
 .sf-arrows > li:hover > .sf-with-ul:after,
 .sf-arrows > .sfHover > .sf-with-ul:after {
-  border-top-color: #1a3151; /* IE8 fallback colour */
+  border-top-color: #29cb1f; /* IE8 fallback colour */
 }
 
 ul.sub-current .current > .sf-with-ul:focus:after,
 ul.sub-current .current:hover > .sf-with-ul:after,
 ul.sub-current .current .sfHover > .sf-with-ul:after {
-  border-left-color: #1a3151; /* IE8 fallback colour */
+  border-left-color: #29cb1f; /* IE8 fallback colour */
 }
 
 /*! Swipebox v1.3.0 | Constantin Saguin csag.co | MIT License | github.com/brutaldesign/swipebox */
@@ -13431,7 +13431,7 @@ iframe.big-video {
 
 .btn-iw {
   padding: 10px 30px;
-  background: #1a3151;
+  background: #29cb1f;
   color: #fff;
   margin: 15px 10px;
   display: inline-block;
@@ -13441,8 +13441,8 @@ iframe.big-video {
   background: transparent;
 }
 .btn-iw.skin {
-  color: #1a3151;
-  border-color: #1a3151;
+  color: #29cb1f;
+  border-color: #29cb1f;
 }
 .btn-iw.skin:hover {
   color: #fff;

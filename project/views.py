@@ -1,6 +1,7 @@
+from calendar import c
 from django.shortcuts import render
 from appArbitro.models import arbitro
-from appContrato.models import persona
+from appContrato.models import contrato, persona, tipo_persona
 from appEquipo.models import equipo
 from user.models import User
 # Create your views here.
@@ -30,8 +31,11 @@ def contextoJugador(request):
 
 def contextoEquipo(request, nombre_equipo):
     equipos = equipo.objects.get(nombre=nombre_equipo.upper())
+    #personas = persona.objects.get(tipo_persona_id=2)
+    contratos = contrato.objects.select_related('persona').filter(persona_id__tipo_persona_id=2,nuevo_club=equipos.equipo_id,estado=True)
     data = {
-        'equipo' : equipos
+        'equipo' : equipos,
+        'contrato' : contratos,
     }
 
     return render(request, 'equipo.html', data)
