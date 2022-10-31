@@ -31,8 +31,7 @@ def contextoJugador(request):
 
 def contextoEquipo(request, nombre_equipo):
     equipos = equipo.objects.get(nombre=nombre_equipo.upper())
-    #personas = persona.objects.get(tipo_persona_id=2)
-    contratos = contrato.objects.select_related('persona').filter(persona_id__tipo_persona_id=2,nuevo_club=equipos.equipo_id,estado=True)
+    contratos = contrato.objects.select_related().filter(nuevo_club=equipos.equipo_id, estado=True)
     data = {
         'equipo' : equipos,
         'contrato' : contratos,

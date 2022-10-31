@@ -20,7 +20,11 @@
                         <ul class="general-info">
                             <li><h6><strong>Siglas:</strong> {{ equipo.siglas }}</h6></li>
                             <li><h6><strong>Presidente:</strong> {{ equipo.presidente }}</h6></li>
-                            <li><h6><strong>Entrenador:</strong> {{ contrato.persona_id.alias}}</h6></li>
+                            {% for c in contrato %}
+                            {% if c.persona_id.tipo_persona_id.descripcion == 'ENTRENADOR' %}
+                            <li><h6><strong>Entrenador:</strong> {{ c.persona_id.nombre }} {{ c.persona_id.apellido}}</h6></li>
+                            {% endif %}
+                            {% endfor %}
                             <li><h6><strong>Total Titles:</strong> 100+</h6></li>
                             <li><h6><strong>Location:</strong> Colombia</h6></li>
                             <li>
