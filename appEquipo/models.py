@@ -36,6 +36,7 @@ class equipo(models.Model):
     logo=models.ImageField(null=True, blank=True, upload_to='equipo/logo/')
     vestimenta_principal=models.ImageField(null=True, blank=True, upload_to='equipo/vestimenta_principal/')
     vestimenta_alterna=models.ImageField(null=True,blank=True, upload_to='equipo/vestimenta_secundaria/')
+    portada=models.ImageField(null=True,blank=True,upload_to='equipo/portada/')
     presidente=models.CharField(default='', max_length=50)
     nombre=models.CharField(max_length=70)
     siglas=models.CharField(max_length=3)

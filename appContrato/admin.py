@@ -8,7 +8,7 @@ class tipo_personaAdmin(admin.ModelAdmin):
     search_fields = ['descripcion']
 
 class personaAdmin(admin.ModelAdmin):
-    list_display=['persona_id', 'nombre', 'apellido', 'alias', 'sexo', 'fecha_nacimiento','ciudad_id','estatura','peso','estado','tipo_persona_id']
+    list_display=['persona_id', 'nombre', 'apellido', 'alias', 'sexo', 'fecha_nacimiento','ciudad_id','estatura','peso','estado','tipo_persona_id','foto']
     ordering = ['persona_id']
     search_fields = ['nombre','apellido','alias']
 

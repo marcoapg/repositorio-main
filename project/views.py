@@ -24,17 +24,26 @@ def contadoresAdmin(request):
 def contextoJugador(request):
 
     data = {
-
+        
     }
 
     return render(request, 'jugador.html', data)
 
 def contextoEquipo(request, nombre_equipo):
     equipos = equipo.objects.get(nombre=nombre_equipo.upper())
-    contratos = contrato.objects.select_related().filter(nuevo_club=equipos.equipo_id, estado=True)
+    tipo_persona_entrenador = tipo_persona.objects.get(descripcion='ENTRENADOR')
+    persona_entrenador = persona.objects.filter(tipo_persona_id=tipo_persona_entrenador.tipo_persona_id)
+    listaentrenador = []
+    for p_e in persona_entrenador:
+        contratos = contrato.objects.filter(persona_id= p_e.persona_id,nuevo_club=equipos.equipo_id, estado=True)
+        for c in contratos:
+            if(c.estado == True):
+                listaentrenador.append(c)
+
     data = {
         'equipo' : equipos,
         'contrato' : contratos,
+        'entrenador': listaentrenador,
     }
 
     return render(request, 'equipo.html', data)
@@ -44,4 +53,3 @@ def index(request):
         
     }
     return render(request, 'index.html', data)
-

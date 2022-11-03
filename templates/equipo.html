@@ -20,19 +20,14 @@
                         <ul class="general-info">
                             <li><h6><strong>Siglas:</strong> {{ equipo.siglas }}</h6></li>
                             <li><h6><strong>Presidente:</strong> {{ equipo.presidente }}</h6></li>
-                            {% for c in contrato %}
-                            {% if c.persona_id.tipo_persona_id.descripcion == 'ENTRENADOR' %}
+                            {% for c in entrenador %}
+                            {% comment %} {% if c.persona_id.tipo_persona_id.descripcion == 'ENTRENADOR' %} {% endcomment %}
                             <li><h6><strong>Entrenador:</strong> {{ c.persona_id.nombre }} {{ c.persona_id.apellido}}</h6></li>
-                            {% endif %}
+                            {% comment %} {% endif %} {% endcomment %}
                             {% endfor %}
-                            <li><h6><strong>Total Titles:</strong> 100+</h6></li>
-                            <li><h6><strong>Location:</strong> Colombia</h6></li>
-                            <li>
-                                <h6>
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                    <a href="https://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">www.site.com</a>
-                                </h6>
-                            </li>
+                            <li><h6><strong>Tipo de Equipo:</strong>{{ equipo.tipo_equipo_id.descripcion }}</h6></li>
+                            <li><h6><strong>Localización:</strong> {{ equipo.sede_id.ciudad_id.nombre }}</h6></li>
+                            <li><h6><strong>Sede:</strong> {{ equipo.sede_id.nombre }}</h6></li>
                         </ul>
 
                         <ul class="social-teams">
@@ -63,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-image-team" style="background:url(img/clubs-teams/colombia.jpg);"></div>
+    <div class="bg-image-team" style="background:url(   );"></div>
 </div>
 <!-- End Section Title -->
 
@@ -80,7 +75,7 @@
                                 <!-- Nav Tabs -->
                                 <ul class="nav nav-tabs" id="myTab">
                                    <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
-                                   <li><a href="#squad" data-toggle="tab">Squad</a></li>
+                                   <li><a href="#squad" data-toggle="tab">Jugadores</a></li>
                                    <li><a href="#fixtures" data-toggle="tab">FIXTURES</a></li>
                                    <li><a href="#results" data-toggle="tab">RESULTS</a></li>
                                    <li><a href="#stats" data-toggle="tab">STATS</a></li>
@@ -245,11 +240,13 @@
                                     <div class="tab-pane" id="squad">
                                         <div class="row">
 
+                                            {% for c in contrato %}
+                                            {% if c.persona_id.tipo_persona_id.descripcion == 'JUGADOR' %}
                                             <!-- Item Player -->
                                             <div class="col-xl-4 col-lg-6 col-md-6">
                                                 <div class="item-player">
                                                     <div class="head-player">
-                                                        <img src="img/players/1.jpg" alt="location-team">
+                                                        <img src="{{ c.persona_id.foto.url }}" alt="location-team">
                                                         <div class="overlay"><a href="single-player.html">+</a></div>
                                                     </div>
                                                     <div class="info-player">
@@ -257,7 +254,7 @@
                                                             13
                                                         </span>
                                                         <h4>
-                                                            Cristiano Ronaldo
+                                                            {{ c.persona_id.nombre }} {{ c.persona_id.apellido }}
                                                             <span>Forward</span>
                                                         </h4>
                                                         <ul>
@@ -272,6 +269,11 @@
                                                 </div>
                                             </div>
                                             <!-- End Item Player -->
+                                            {% endif %}
+                                            {% endfor %}
+
+
+
 
                                             <!-- Item Player -->
                                             <div class="col-xl-4 col-lg-6 col-md-6">

@@ -9,7 +9,7 @@ class categoriaEquipo(admin.ModelAdmin):
     search_fields=['noxmbre']
 
 class equipoAdmin(admin.ModelAdmin):
-    list_display=['equipo_id','logo','vestimenta_principal','vestimenta_alterna','presidente','nombre','siglas','categoria_equipo','tipo_equipo_id','sede_id','deporte_id']
+    list_display=['equipo_id','logo','vestimenta_principal','vestimenta_alterna','portada','presidente','nombre','siglas','categoria_equipo','tipo_equipo_id','sede_id','deporte_id']
     ordering=['equipo_id']
     search_fields = ['nombre']
 

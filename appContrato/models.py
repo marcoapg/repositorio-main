@@ -37,6 +37,7 @@ class persona(models.Model):
     peso=models.FloatField()
     estado=models.BooleanField()
     tipo_persona_id=models.ForeignKey(tipo_persona,on_delete=models.CASCADE, db_column='tipo_persona_id')
+    foto = models.ImageField(null=True,blank=True, upload_to='jugador/foto/')
     #Guardar en mayùscula
     def save(self, force_insert=False, force_update=False):
         self.nombre = self.nombre.upper()
