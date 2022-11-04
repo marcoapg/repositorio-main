@@ -46,7 +46,7 @@ class persona(models.Model):
         super(persona, self).save(force_insert, force_update)
  
     def __str__(self):
-        return self.nombre
+        return self.nombre + ' ' + self.apellido
 
     class Meta:
         verbose_name_plural='persona'

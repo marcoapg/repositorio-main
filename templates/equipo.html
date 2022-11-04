@@ -20,17 +20,21 @@
                         <ul class="general-info">
                             <li><h6><strong>Siglas:</strong> {{ equipo.siglas }}</h6></li>
                             <li><h6><strong>Presidente:</strong> {{ equipo.presidente }}</h6></li>
-                            {% for c in entrenador %}
+                            {% comment %} {% for c in entrenador %} {% endcomment %}
                             {% comment %} {% if c.persona_id.tipo_persona_id.descripcion == 'ENTRENADOR' %} {% endcomment %}
-                            <li><h6><strong>Entrenador:</strong> {{ c.persona_id.nombre }} {{ c.persona_id.apellido}}</h6></li>
+                            {% if  entrenador.contrato_id != null %}
+                            <li><h6><strong>Entrenador:</strong> {{ entrenador.persona_id.nombre }} {{ entrenador.persona_id.apellido}}</h6></li>
+                            {% else %}
+                            <li><h6><strong>Entrenador:</strong> - </h6></li>
+                            {% endif %}
                             {% comment %} {% endif %} {% endcomment %}
-                            {% endfor %}
+                            {% comment %} {% endfor %} {% endcomment %}
                             <li><h6><strong>Tipo de Equipo:</strong>{{ equipo.tipo_equipo_id.descripcion }}</h6></li>
                             <li><h6><strong>Localización:</strong> {{ equipo.sede_id.ciudad_id.nombre }}</h6></li>
                             <li><h6><strong>Sede:</strong> {{ equipo.sede_id.nombre }}</h6></li>
                         </ul>
 
-                        <ul class="social-teams">
+                        {% comment %} <ul class="social-teams">
                             <li>
                                 <div>
                                     <a href="#" class="facebook">
@@ -52,7 +56,8 @@
                                     </a>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> {% endcomment %}
+
                     </div>
                 </div>
             </div>
@@ -240,13 +245,13 @@
                                     <div class="tab-pane" id="squad">
                                         <div class="row">
 
-                                            {% for c in contrato %}
-                                            {% if c.persona_id.tipo_persona_id.descripcion == 'JUGADOR' %}
+
                                             <!-- Item Player -->
+                                            {% for a in alineacion %}
                                             <div class="col-xl-4 col-lg-6 col-md-6">
                                                 <div class="item-player">
                                                     <div class="head-player">
-                                                        <img src="{{ c.persona_id.foto.url }}" alt="location-team">
+                                                        <img src="/images/{{ a.contrato_id.persona_id.foto }}" alt="location-team">
                                                         <div class="overlay"><a href="single-player.html">+</a></div>
                                                     </div>
                                                     <div class="info-player">
@@ -254,7 +259,7 @@
                                                             13
                                                         </span>
                                                         <h4>
-                                                            {{ c.persona_id.nombre }} {{ c.persona_id.apellido }}
+                                                            {{ a.contrato_id.persona_id.nombre }}
                                                             <span>Forward</span>
                                                         </h4>
                                                         <ul>
@@ -268,9 +273,9 @@
                                                     <a href="single-player.html" class="btn">View Player <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
-                                            <!-- End Item Player -->
-                                            {% endif %}
                                             {% endfor %}
+                                            <!-- End Item Player -->
+
 
 
 
